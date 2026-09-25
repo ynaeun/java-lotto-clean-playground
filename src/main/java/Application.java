@@ -1,9 +1,8 @@
-import domain.Lotto;
-import domain.LottoMachine;
-import domain.Lottos;
-import domain.PurchaseAmount;
+import domain.*;
+
 import java.util.List;
 import java.util.Scanner;
+
 import view.InputView;
 import view.ResultView;
 
@@ -22,6 +21,7 @@ public class Application {
         Lotto winnerNumbers = new Lotto(InputView.readWinnerNumber(sc));
         List<Integer> matchCount = lottos.getMatchCount(winnerNumbers.getNumbers());
 
-        ResultView.printStats(matchCount, purchaseAmount.getLottosCount());
+        LottoResult result = new LottoResult(matchCount);
+        ResultView.printStats(result, purchaseAmount.getLottosCount());
     }
 }
